@@ -1,0 +1,20 @@
+title: "BaseAI"
+description: "recorder the idea"
+url: "https://BaseAI998.github.io"
+author: "BaseAI998"
+timezone: "Asia/Shanghai"
+
+# 使用 GitHub Pages 自带的 Jekyll
+markdown: kramdown
+highlighter: rouge
+
+# 博客的基本设置
+permalink: /:year/:month/:day/:title/
+paginate: 5
+
+# 导航菜单（在 index 和 about 里用）
+nav:
+  - name: "Home"
+    url: "/"
+  - name: "About me"
+    url: "/about"

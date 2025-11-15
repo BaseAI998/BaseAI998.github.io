@@ -1,0 +1,78 @@
+---
+layout: none
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ site.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{{ site.description }}" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="logo-area">
+          <div class="logo-dot"></div>
+          <div>
+            <div class="site-title">{{ site.title }}</div>
+            <div class="site-subtitle">{{ site.description }}</div>
+          </div>
+        </div>
+        <nav class="nav">
+          {% for item in site.nav %}
+          <a href="{{ item.url }}">{{ item.name }}</a>
+          {% endfor %}
+        </nav>
+      </div>
+    </header>
+
+    <main class="container main">
+      <section class="hero">
+        <h1>👋 欢迎来到我的博客</h1>
+        <p>
+          这里会记录一些关于算法、编程、AI、Web3，和生活里觉得值得留下来的东西。
+        </p>
+      </section>
+
+      <section class="post-list">
+        {% assign posts = site.posts %}
+        {% if posts.size == 0 %}
+          <p>还没有文章呢，去 <code>_posts</code> 里写第一篇吧！</p>
+        {% endif %}
+
+        {% for post in posts %}
+        <article class="post-card">
+          <a class="post-card-link" href="{{ post.url }}">
+            <div class="post-meta">
+              <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+              {% if post.tags %}
+              <span class="post-tags">
+                {% for tag in post.tags %}
+                <span class="tag">{{ tag }}</span>
+                {% endfor %}
+              </span>
+              {% endif %}
+            </div>
+            <h2 class="post-title">{{ post.title }}</h2>
+            {% if post.excerpt %}
+            <p class="post-excerpt">
+              {{ post.excerpt | strip_html | strip_newlines | truncate: 120 }}
+            </p>
+            {% endif %}
+          </a>
+        </article>
+        {% endfor %}
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>© {{ "now" | date: "%Y" }} {{ site.author }}</span>
+        <span>由 GitHub Pages & Jekyll 驱动</span>
+      </div>
+    </footer>
+  </body>
+</html>
